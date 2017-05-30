@@ -112,7 +112,10 @@ Span 8:    100%
     width:48.5%;
 }
 .col5 {
-    width:61.375%;
+    /*2*/
+    /*width:61.375%;*/
+    width:59%;
+    /*233 */
 }
 .col6 {
     width:74.25%;
@@ -185,7 +188,7 @@ Span 8:    100%
   float:left;
   width:32.666%;
   margin-left:1%;
-  position:relative;
+ position:relative;
 }
 
 #menu li:first-child {
