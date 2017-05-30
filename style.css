@@ -163,6 +163,7 @@ Span 8:    100%
 
 #profile {
   background-color: #56bf71;
+  overflow-y: scroll;
 }
 
 #resume {
@@ -403,4 +404,35 @@ Span 8:    100%
   #menu li.active span {
     display:none;
   }
+}
+
+.column ul {
+    border: 0pt none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0pt;
+    outline-color: invert;
+    outline-style: none;
+    outline-width: 0pt;
+    padding: 0pt;
+    vertical-align: baseline;
+    list-style: circle; 
+}
+
+.column ul li {
+    border: 0pt none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0pt;
+    outline-color: invert;
+    outline-style: none;
+    outline-width: 0pt;
+    padding: 0pt;
+    vertical-align: baseline;
+    padding-bottom: 0.5em;
+    margin-left: 1.4em; 
 }
