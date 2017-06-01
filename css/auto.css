@@ -1,16 +1,16 @@
-@charset "utf8";/* * description:Æû³µÊ×Ò³¸Ä°æ * author:marsliang * date:2014-03-04 */
+@charset "utf8";/* * description:æ±½è½¦é¦–é¡µæ”¹ç‰ˆ * author:marsliang * date:2014-03-04 */
 /*css reset*/
 em{font-style:normal}
 p{word-wrap:break-word}
 .layout:after,.hd:after,.bd:after,.ft:after,.cf:after,.Q-tList:after,.Q-tList ul:after,.Q-tList ol:after,.Q-pList:after,.Q-pList ul:after,.Q-tpList:after,.Q-tpList ul:after,.Q-tpWrap:after{content:"";display:table;clear:both}
 .layout,.hd,.bd,.ft,.cf,.Q-tList,.Q-tList ul,.Q-tList ol,.Q-pList,.Q-pList ul,.Q-tpList,.Q-tpList ul,.Q-tpWrap{*zoom:1}
 
-/*½¹µãÍ¼*/
+/*ç„¦ç‚¹å›¾*/
 .foucs_pic{width:990px;height:395px;position:relative;z-index:99;overflow:hidden;}
 .pic_lists li{display:block;height:395px;width:990px;position:absolute;top:0;right:0;z-index:1}
 /*
 .foucs_pic .r_panel{height:70px;width:990px;background-color:#000;position:absolute;top:330px;right:0;overflow:hidden;z-index:9999;background:rgba(0,0,0,0.1);filter:alpha(opacity=10);}
-*/
+ */
 .foucs_pic .r_panel{height:70px;width:990px;position:absolute;top:330px;right:0;overflow:hidden;z-index:9999;}
 .foucs_pic .r_panel .wrap{padding:0px 0px 0;width:990px;height:70px;position:relative;text-align:right}
 .foucs_pic .r_panel .wrap .title{font-size:20px;color:#fff;line-height:35px;padding:18px;}

@@ -4,11 +4,11 @@ var x = function (id) {
 };
 
 var Class = {
-  create: function() {
-    return function() {
-      this.initialize.apply(this, arguments);
+    create: function() {
+        return function() {
+            this.initialize.apply(this, arguments);
+        }
     }
-  }
 }
 
 Object.extend = function(destination, source) {
@@ -31,83 +31,84 @@ function addEventHandler(oTarget, sEventType, fnHandler) {
 
 var Scroller = Class.create();
 Scroller.prototype = {
-  initialize: function(idScroller, idScrollMid, options) {
-    var oScroll = this, oScroller = x(idScroller), oScrollMid = x(idScrollMid);
-    
-    this.heightScroller = oScroller.offsetHeight;
-    this.heightList = oScrollMid.offsetHeight;
-    
-    if(this.heightList <= this.heightScroller) return;
-    
-    oScroller.style.overflow = "hidden";
-    oScrollMid.appendChild(oScrollMid.cloneNode(true));
-    
-    this.oScroller = oScroller;    
-    this.timer = null;
-    
-    this.SetOptions(options);
-    
-    this.side = 1;//1 «…œ -1 «œ¬
-    switch (this.options.Side) {
-        case "down" :
-            this.side = -1;
-            break;
-        case "up" :
-        default :
-            this.side = 1;
-    }
-    
-    addEventHandler(oScrollMid , "mouseover", function() { oScroll.Stop(); });
-    addEventHandler(oScrollMid , "mouseout", function() { oScroll.Start(); });
-    
-    if(this.options.PauseStep <= 0 || this.options.PauseHeight <= 0) this.options.PauseStep = this.options.PauseHeight = 0;
-    this.Pause = 0;
-    
-    this.Start();
-  },
-  //…Ë÷√ƒ¨»œ Ù–‘
-  SetOptions: function(options) {
-    this.options = {//ƒ¨»œ÷µ
-      Step:            1,//√ø¥Œ±‰ªØµƒpx¡ø
-      Time:            2,//ÀŸ∂»(‘Ω¥Û‘Ω¬˝)
-      Side:            "up",//πˆ∂Ø∑ΩœÚ:"up" «…œ£¨"down" «œ¬
-      PauseHeight:    0,//∏Ù∂‡∏ﬂÕ£“ª¥Œ
-      PauseStep:    5000//Õ£∂Ÿ ±º‰(PauseHeight¥Û”⁄0∏√≤Œ ˝≤≈”––ß)
-    };
-    Object.extend(this.options, options || {});
-  },
-  //πˆ∂Ø
-  Scroll: function() {
-    var iScroll = this.oScroller.scrollTop, iHeight = this.heightList, time = this.options.Time, oScroll = this, iStep = this.options.Step * this.side;
-    
-    if(this.side > 0){
-        if(iScroll >= (iHeight * 2 - this.heightScroller)){ iScroll -= iHeight; }
-    } else {
-        if(iScroll <= 0){ iScroll += iHeight; }
-    }
-    
-    if(this.options.PauseHeight > 0){
-        if(this.Pause >= this.options.PauseHeight){
-            time = this.options.PauseStep;
-            this.Pause = 0;
-        } else {
-            this.Pause += Math.abs(iStep);
-            this.oScroller.scrollTop = iScroll + iStep;
+    initialize: function(idScroller, idScrollMid, options) {
+        var oScroll = this, oScroller = x(idScroller), oScrollMid = x(idScrollMid);
+
+        this.heightScroller = oScroller.offsetHeight;
+        this.heightList = oScrollMid.offsetHeight;
+
+        if(this.heightList <= this.heightScroller) return;
+
+        oScroller.style.overflow = "hidden";
+        oScrollMid.appendChild(oScrollMid.cloneNode(true));
+
+        this.oScroller = oScroller;    
+        this.timer = null;
+
+        this.SetOptions(options);
+
+        this.side = 1;//1ÊòØ‰∏ä -1ÊòØ‰∏ã
+        switch (this.options.Side) {
+            case "down" :
+                this.side = -1;
+                break;
+            case "up" :
+            default :
+                this.side = 1;
         }
-    } else { this.oScroller.scrollTop = iScroll + iStep; }
-    
-    this.timer = window.setTimeout(function(){ oScroll.Scroll(); }, time);
-  },
-  //ø™ º
-  Start: function() {
-    this.Scroll();
-  },
-  //Õ£÷π
-  Stop: function() {
-    clearTimeout(this.timer);
-  }
+
+        addEventHandler(oScrollMid , "mouseover", function() { oScroll.Stop(); });
+        addEventHandler(oScrollMid , "mouseout", function() { oScroll.Start(); });
+
+        if(this.options.PauseStep <= 0 || this.options.PauseHeight <= 0) this.options.PauseStep = this.options.PauseHeight = 0;
+        this.Pause = 0;
+
+        this.Start();
+    },
+    //ËÆæÁΩÆÈªòËÆ§Â±ûÊÄß
+    SetOptions: function(options) {
+        this.options = {//ÈªòËÆ§ÂÄº
+            Step:            1,//ÊØèÊ¨°ÂèòÂåñÁöÑpxÈáè
+            Time:            2,//ÈÄüÂ∫¶(Ë∂äÂ§ßË∂äÊÖ¢)
+            Side:            "up",//ÊªöÂä®ÊñπÂêë:"up"ÊòØ‰∏äÔºå"down"ÊòØ‰∏ã
+            PauseHeight:    0,//ÈöîÂ§öÈ´òÂÅú‰∏ÄÊ¨°
+            PauseStep:    5000//ÂÅúÈ°øÊó∂Èó¥(PauseHeightÂ§ß‰∫é0ËØ•ÂèÇÊï∞ÊâçÊúâÊïà)
+        };
+        Object.extend(this.options, options || {});
+    },
+    //ÊªöÂä®
+    Scroll: function() {
+        var iScroll = this.oScroller.scrollTop, iHeight = this.heightList, time = this.options.Time, oScroll = this, iStep = this.options.Step * this.side;
+
+        if(this.side > 0){
+            if(iScroll >= (iHeight * 2 - this.heightScroller)){ iScroll -= iHeight; }
+        } else {
+            if(iScroll <= 0){ iScroll += iHeight; }
+        }
+
+        if(this.options.PauseHeight > 0){
+            if(this.Pause >= this.options.PauseHeight){
+                time = this.options.PauseStep;
+                this.Pause = 0;
+            } else {
+                this.Pause += Math.abs(iStep);
+                this.oScroller.scrollTop = iScroll + iStep;
+            }
+        } else { this.oScroller.scrollTop = iScroll + iStep; }
+
+        this.timer = window.setTimeout(function(){ oScroll.Scroll(); }, time);
+    },
+    //ÂºÄÂßã
+    Start: function() {
+        this.Scroll();
+    },
+    //ÂÅúÊ≠¢
+    Stop: function() {
+        clearTimeout(this.timer);
+    }
 };
 
 window.onload = function(){
     new Scroller("idScroller", "idScrollMid",{ PauseHeight:57 });
 }
+

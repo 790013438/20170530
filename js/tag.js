@@ -7,20 +7,20 @@ function register0410(item,page)
 
 
 function fod(obj,name)
-		{
-			var p = obj.parentNode.getElementsByTagName("td");
-			var p1 = getNames(name,"f","div"); // document.getElementById(name).getElementsByTagName("div");
-			for(i=0;i<p1.length;i++)
-			{
-				if(obj==p[i])
-				{
-					p[i].className = "m"+[i];
-					p1[i].className = "dis";
-				}
-				else
-				{
-					p[i].className = "n"+[i];
-					p1[i].className = "undis";
-				}
-			}
-		}
+{
+    var p = obj.parentNode.getElementsByTagName("td");
+    var p1 = getNames(name,"f","div"); // document.getElementById(name).getElementsByTagName("div");
+    for(i=0;i<p1.length;i++)
+    {
+        if(obj==p[i])
+        {
+            p[i].className = "m"+[i];
+            p1[i].className = "dis";
+        }
+        else
+        {
+            p[i].className = "n"+[i];
+            p1[i].className = "undis";
+        }
+    }
+}
